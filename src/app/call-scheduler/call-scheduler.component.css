@@ -1,0 +1,20 @@
+button{
+    /* background-color: black; */
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid green;
+  }
+
+  input, select {
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .center {
+    margin: auto;
+    width: 50%;
+    border: 2px solid green;
+    padding: 15px;
+    margin-bottom: 20px;
+  }

@@ -1,0 +1,59 @@
+<div class="container" style="padding: 1vw;">
+    <div class="video-section" [class.collapsed-chat]="!isChatVisible" [ngClass]="getVideoLayoutClass()">
+      <div id="video-player-container">
+        <div *ngFor="let userId of paginatedVideos" class="video-container">
+          <video id="{{ userId }}" media-type="video" autoplay muted></video>
+        </div>
+      </div>
+      <div class="controls">
+        <button *ngIf="!isAudioMuted" (click)="onMicrophoneClick()" class="button-circle">
+          <img src="../assets/participants/audio-muted.svg">
+        </button>
+        <button *ngIf="isAudioMuted" (click)="onMicrophoneClick()" class="button-circle">
+          <img src="../assets/participants/audio-unmuted.svg">
+        </button>
+        <button *ngIf="!isVideoMuted" (click)="onCameraClick()" class="button-circle">
+          <img src="../assets/participants/video-off.svg">
+        </button>
+        <button *ngIf="isVideoMuted" (click)="onCameraClick()" class="button-circle">
+          <img src="../assets/participants/video-on.svg">
+        </button>
+        <button class="button-circle">
+          <img src="../assets/participants/call-end.svg">
+        </button>
+
+        <button class="button-circle">
+            <img src="../assets/participants/users-new.png" style="width: 20px;">
+          </button>
+        <button (click)="toggleChat()" class="button-circle">
+          <img src="../assets/participants/icon-chat.svg" style="height: 19px;">
+        </button>
+
+
+      </div>
+      
+    </div>
+  
+    <!-- Collapsible Chat Section -->
+    <div class="chat-section" [class.hidden]="!isChatVisible">
+      <div *ngIf="isChatVisible" class="chat-container">
+        <div class="chat-messages">
+          <div *ngFor="let msg of messages">{{ msg }}</div>
+        </div>
+        <div class="chat-input">
+          <input [(ngModel)]="newMessage" (keyup.enter)="sendMessage()" placeholder="Type a message..." />
+          <button (click)="sendMessage()" class="button-sqare">Send</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-section" [class.hidden]="!isUsersVisible">
+        <div *ngIf="isUsersVisible" class="chat-container">
+          <div *ngFor="let user of users">
+
+
+          </div>
+        </div>
+    </div>
+
+  </div>

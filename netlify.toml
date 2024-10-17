@@ -1,0 +1,9 @@
+[build]
+  command = "ng build"
+  publish = "dist/zoom-demo-1o1/browser"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+  Cross-Origin-Embedder-Policy= "credentialless"
+  Cross-Origin-Opener-Policy= "same-origin"

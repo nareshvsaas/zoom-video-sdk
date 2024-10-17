@@ -1,0 +1,34 @@
+<div>
+    <h1 style="text-align: center;">1o1 Zoom Demo</h1>
+</div>
+<div class="center">
+    <input type="text" placeholder="Enter Name" [(ngModel)]="name" class="col-md-4"><br><br>
+    <select class="col-md-4" [(ngModel)]="role">
+        <option value="" disabled selected>Select an option</option>
+
+        <option>host</option>
+        <option>participant</option>
+    </select><br><br>
+    <button *ngIf="role=='host'" (click)="joinMeeting()">Join Meeting</button>
+</div>
+<div class="container" *ngIf="role=='participant'">
+    <div class="row">
+        <div *ngFor="let menu of daysdata" class="col-md-4 text-center mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Slot Details</h5>
+                    <p class="card-text" style="text-align: left;"><b>Slot:</b> {{menu.startTime}} - {{menu.endTime}}
+                    </p>
+
+                    <div *ngFor="let participant of menu.participants" style="text-align: left;">
+                        {{participant.first_name}} <img src="assets/call-enable.png" alt="profile-image"
+                            style="height: 30px; width: 30px; cursor: pointer;"
+                            (click)="onJoinRoom(participant.slotId, participant.first_name, participant.trainee_id)">
+                    </div>
+
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
